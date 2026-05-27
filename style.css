@@ -1,0 +1,55 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+
+body {
+    background-color: #FFF7F0;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.container {
+    padding: 0.6rem 2rem;
+    min-height: 100vh;
+    max-height: 100%;
+    width: clamp(350px, 100%, 1200px);
+    margin: 0 auto;
+    background-color: #f0f8ff;
+}
+
+h1 {
+    margin-bottom: 2rem;
+    text-align: center;
+    font-size: 3rem;
+    color: #192939;
+}
+
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(290px, 500px));
+    gap: 1rem;
+}
+
+.card {
+    padding: 0.5rem 0.7rem;
+    border-radius: 10px;
+    box-shadow: 1px 1px 4px -2px #606060;
+    /* border: 1px solid #000; */
+    background-color: #fafdff;
+}
+
+.title {
+    margin-bottom: 1rem;
+    font-size: 1.8rem;
+}
+
+.author {
+    font-size: 1.2rem;
+}
+
+.pages {
+    text-align: right;
+    font-size: 1.1rem;
+}

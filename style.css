@@ -33,10 +33,9 @@ h1 {
 }
 
 .card {
-    padding: 0.5rem 0.7rem;
+    padding: 1rem 2rem;
     border-radius: 10px;
     box-shadow: 1px 1px 4px -2px #606060;
-    /* border: 1px solid #000; */
     background-color: #fafdff;
 }
 

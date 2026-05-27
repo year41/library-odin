@@ -28,7 +28,7 @@ h1 {
 
 .card-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(290px, 500px));
+    grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
     gap: 1rem;
 }
 

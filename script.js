@@ -33,7 +33,11 @@ function addBookToLibrary(title, author, pages) {
     myLibrary.push(bookItem);
 };
 
-addBookToLibrary("The Hobbit", "J.R.R. Tolkien", "295");
 addBookToLibrary("The Outsider", "Albert Camus", "144");
+addBookToLibrary("Crime and Punishment", "Fyodor Dostoevsky", "650");
+addBookToLibrary("The Hobbit", "J.R.R. Tolkien", "295");
+addBookToLibrary("To Kill a Mockingbird", "Harper Lee", "320");
+addBookToLibrary("Pride and Prejudice", "Jane Austen", "400");
+addBookToLibrary("The Great Gatsby", "F. Scott Fitzgerald", "180");
 
 console.log(myLibrary);

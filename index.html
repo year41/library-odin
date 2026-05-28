@@ -23,16 +23,36 @@
             <button class="btn" popovertarget="my-dialog2">Open dialog</button>
         </div>
 
-        <dialog id="my-dialog" open>
-            <p>Random dialog text</p>
-            <button commandfor="my-dialog" command="close">Close</button>
-        </dialog>
+        <!-- <dialog id="my-dialog"> -->
+            <h2 class="form title">Add a new Book!</h2>
+            <form method="dialog">
+                <!-- <form class="new-book" action="https://httpbin.org/post" method="post"> -->
+                <div class="form-row">
+                    <label for="title">Title</label>
+                    <input type="text" name="title" id="title" placeholder="Book title..." required>
+                </div>
+                <div class="form-row">
+                    <label for="author">Author</label>
+                    <input type="text" name="author" id="author" placeholder="Author name..." required>
+                </div>
+                <div class="form-row">
+                    <label for="pages">Pages</label>
+                    <input type="text" name="pages" id="pages" pattern="[0-9]*" placeholder="Number of pages..."
+                        required>
+                </div>
+                <div class="form-btn">
+                    <!-- <button>Submit 1</button> -->
+                    <input class="btn" type="submit" value="Submit 2">
+                </div>
+            </form>
+            <!-- <button commandfor="my-dialog" command="close">Close</button> -->
+        <!-- </dialog> -->
 
 
-        <!-- <dialog id="my-dialog2" popover>
+        <dialog id="my-dialog2" popover>
             <p>This dialog was opened using a popovertargetaction attribute.</p>
             <button popovertarget="my-dialog" popovertargetaction="hide">Close</button>
-        </dialog> -->
+        </dialog>
     </div>
 </body>
 

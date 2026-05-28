@@ -14,11 +14,25 @@
         <header>
             <h1>Very Real Library!</h1>
         </header>
+
         <main class="card-container">
         </main>
+
         <div class="menu">
-            <button class="btn">NEW</button>
+            <button class="btn" command="show-modal" commandfor="my-dialog">Add New Book</button>
+            <button class="btn" popovertarget="my-dialog2">Open dialog</button>
         </div>
+
+        <dialog id="my-dialog" open>
+            <p>Random dialog text</p>
+            <button commandfor="my-dialog" command="close">Close</button>
+        </dialog>
+
+
+        <!-- <dialog id="my-dialog2" popover>
+            <p>This dialog was opened using a popovertargetaction attribute.</p>
+            <button popovertarget="my-dialog" popovertargetaction="hide">Close</button>
+        </dialog> -->
     </div>
 </body>
 

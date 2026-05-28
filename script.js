@@ -36,6 +36,7 @@ function addBookToLibrary(title, author, pages) {
 };
 
 function createBookCard() {
+    cardContainer.innerHTML = "";
     for (let i = 0; i < myLibrary.length; i++) {
         const book = myLibrary[i];
         
@@ -68,34 +69,59 @@ addBookToLibrary("Pride and Prejudice", "Jane Austen", "400");
 addBookToLibrary("The Great Gatsby", "F. Scott Fitzgerald", "180");
 
 console.log(myLibrary);
-createBookCard();
 
 // Validation
 
-const validTitle = document.getElementById("title");
-const validAuthor = document.getElementById("author");
-const validPages = document.getElementById("pages");
+const titleValue = document.getElementById("title");
+const authorValue = document.getElementById("author");
+const pagesValue = document.getElementById("pages");
 
-validTitle.addEventListener("input", () => {
-    if (validTitle.validity.valueMissing) {
-        validTitle.setCustomValidity("Book's title is required.");
+titleValue.addEventListener("input", () => {
+    if (titleValue.validity.valueMissing) {
+        titleValue.setCustomValidity("Book's title is required.");
     } else {
-        validTitle.setCustomValidity("");
+        titleValue.setCustomValidity("");
     };
 });
 
-validAuthor.addEventListener("input", () => {
-    if (validAuthor.validity.valueMissing) {
-        validAuthor.setCustomValidity("Author's name is required.");
+authorValue.addEventListener("input", () => {
+    if (authorValue.validity.valueMissing) {
+        authorValue.setCustomValidity("Author's name is required.");
     } else {
-        validAuthor.setCustomValidity("");
+        authorValue.setCustomValidity("");
     };
 });
 
-validPages.addEventListener("input", () => {
-    if (validPages.validity.valueMissing) {
-        validPages.setCustomValidity("Number of pages is required.");
+pagesValue.addEventListener("input", () => {
+    if (pagesValue.validity.valueMissing) {
+        pagesValue.setCustomValidity("Number of pages is required.");
     } else {
-        validPages.setCustomValidity("");
+        pagesValue.setCustomValidity("");
     };
 });
+
+const submitBtn = document.querySelector(".submit-btn")
+
+// submitBtn.addEventListener('submit', (e) => {
+//     e.preventDefault();
+//     console.log(titleValue);
+//     addBookToLibrary(titleValue.value, authorValue.value, pagesValue.value);
+//     console.log(titleValue.value);
+//     createBookCard();
+// })
+
+const formSubmit = document.querySelector("#new-book-form");
+
+formSubmit.addEventListener('submit', (e) => {
+    // e.preventDefault();
+    console.log(titleValue);
+    addBookToLibrary(titleValue.value, authorValue.value, pagesValue.value);
+    console.log(titleValue.value);
+    createBookCard();
+    formSubmit.reset();
+})
+
+const dialog = document.querySelector(".my-dialog");
+
+
+createBookCard();

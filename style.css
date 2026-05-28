@@ -84,13 +84,14 @@ h1 {
 dialog {
     margin: auto;
     padding: 0.8rem 1.8rem;
+    width: 280px;
     border: none;
     background-color: var(--card-bg-color);
 }
 
 .form.title {
     margin-bottom: 3rem;
-    /* text-align: center; */
+    text-align: center;
 }
 
 .form-row{
@@ -99,7 +100,7 @@ dialog {
 
     display: flex;
     align-items: center;
-    /* justify-content: space-between; */
+    justify-content: space-between;
 }
 
 .form-row label {
@@ -120,7 +121,8 @@ dialog {
     box-shadow: 0 0 3px 1px #d55d5f;
 }
 
-.form-btn {
+.form-btns {
     margin-top: 2rem;
-    /* justify-self: center; */
+    display: flex;
+    justify-content: space-around;
 }

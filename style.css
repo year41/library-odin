@@ -65,8 +65,7 @@ h1 {
 
 .menu {
     margin-top: 1.3rem;
-    display: flex;
-    justify-content: center;
+    justify-self: center;
 }
 
 .btn {
@@ -91,6 +90,7 @@ dialog {
 
 .form.title {
     margin-bottom: 3rem;
+    /* text-align: center; */
 }
 
 .form-row{

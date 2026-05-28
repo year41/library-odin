@@ -68,4 +68,34 @@ addBookToLibrary("Pride and Prejudice", "Jane Austen", "400");
 addBookToLibrary("The Great Gatsby", "F. Scott Fitzgerald", "180");
 
 console.log(myLibrary);
-// createBookCard();
+createBookCard();
+
+// Validation
+
+const validTitle = document.getElementById("title");
+const validAuthor = document.getElementById("author");
+const validPages = document.getElementById("pages");
+
+validTitle.addEventListener("input", () => {
+    if (validTitle.validity.valueMissing) {
+        validTitle.setCustomValidity("Book's title is required.");
+    } else {
+        validTitle.setCustomValidity("");
+    };
+});
+
+validAuthor.addEventListener("input", () => {
+    if (validAuthor.validity.valueMissing) {
+        validAuthor.setCustomValidity("Author's name is required.");
+    } else {
+        validAuthor.setCustomValidity("");
+    };
+});
+
+validPages.addEventListener("input", () => {
+    if (validPages.validity.valueMissing) {
+        validPages.setCustomValidity("Number of pages is required.");
+    } else {
+        validPages.setCustomValidity("");
+    };
+});

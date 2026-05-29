@@ -28,21 +28,29 @@ function createBookCard() {
 
         const card = document.createElement("div");
         card.classList.toggle("card");
+        const titleContainer = document.createElement("div");
+        titleContainer.classList.toggle("title-container");
         const title = document.createElement("h2");
         title.classList.toggle("title");
+        const removeBtn = document.createElement("button");
+        removeBtn.classList.toggle("btn");
         const author = document.createElement("p");
         author.classList.toggle("author");
         const pages = document.createElement("p");
         pages.classList.toggle("pages");
 
         title.textContent = book.title;
+        removeBtn.textContent = "Delete";
         author.textContent = book.author;
         pages.textContent = `${book.pages} Pages`;
 
         cardContainer.appendChild(card);
-        card.appendChild(title);
+        card.appendChild(titleContainer)
+        titleContainer.appendChild(title);
+        titleContainer.appendChild(removeBtn);
         card.appendChild(author);
         card.appendChild(pages);
+        
     };
 };
 

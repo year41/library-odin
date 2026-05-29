@@ -6,6 +6,7 @@ const authorValue = document.getElementById("author");
 const pagesValue = document.getElementById("pages");
 const formSubmit = document.querySelector("#new-book-form");
 
+
 function Book(title, author, pages) {
     if (!new.target) {
         throw Error("You must use the 'new' operator to call the constructor.");
@@ -32,27 +33,37 @@ function createBookCard() {
         titleContainer.classList.toggle("title-container");
         const title = document.createElement("h2");
         title.classList.toggle("title");
-        const removeBtn = document.createElement("button");
-        removeBtn.classList.toggle("btn");
+        const deleteBtn = document.createElement("button");
+        deleteBtn.classList.toggle("btn");
+        deleteBtn.id = "delete-btn";
         const author = document.createElement("p");
         author.classList.toggle("author");
         const pages = document.createElement("p");
         pages.classList.toggle("pages");
 
+        card.dataset.id = book.id;
         title.textContent = book.title;
-        removeBtn.textContent = "Delete";
+        deleteBtn.textContent = "Delete";
         author.textContent = book.author;
         pages.textContent = `${book.pages} Pages`;
 
         cardContainer.appendChild(card);
         card.appendChild(titleContainer)
         titleContainer.appendChild(title);
-        titleContainer.appendChild(removeBtn);
+        titleContainer.appendChild(deleteBtn);
         card.appendChild(author);
         card.appendChild(pages);
-        
     };
 };
+
+cardContainer.addEventListener('click', (e) => {
+    if (e.target.matches('#delete-btn')) {
+        const cardId = e.target.parentElement.parentElement.dataset.id;
+        const bookIndex = myLibrary.findIndex((obj) => obj.id === cardId);
+        myLibrary.splice(bookIndex, 1);
+        createBookCard();
+    };
+});
 
 titleValue.addEventListener("input", () => {
     if (titleValue.validity.valueMissing) {
@@ -79,14 +90,12 @@ pagesValue.addEventListener("input", () => {
 });
 
 formSubmit.addEventListener('submit', (e) => {
-    console.log(titleValue);
     addBookToLibrary(titleValue.value, authorValue.value, pagesValue.value);
-    console.log(titleValue.value);
     createBookCard();
     formSubmit.reset();
 })
 
-// Sample library books 
+// Sample library books list
 addBookToLibrary("The Outsider", "Albert Camus", "144");
 addBookToLibrary("Crime and Punishment", "Fyodor Dostoevsky", "650");
 addBookToLibrary("The Hobbit", "J.R.R. Tolkien", "295");
@@ -94,5 +103,4 @@ addBookToLibrary("To Kill a Mockingbird", "Harper Lee", "320");
 addBookToLibrary("Pride and Prejudice", "Jane Austen", "400");
 addBookToLibrary("The Great Gatsby", "F. Scott Fitzgerald", "180");
 
-console.log(myLibrary); // Console check
 createBookCard();

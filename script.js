@@ -39,7 +39,7 @@ function createBookCard() {
         deleteBtn.id = "delete-btn";
         const author = document.createElement("p");
         author.classList.toggle("author");
-        const pagesContainer = document.createElement ("div");
+        const pagesContainer = document.createElement("div");
         pagesContainer.classList.toggle("pages-container");
         const readDiv = document.createElement("div");
         const readLabel = document.createElement("label");
@@ -55,6 +55,9 @@ function createBookCard() {
         deleteBtn.textContent = "Delete";
         author.textContent = book.author;
         readLabel.textContent = "Read";
+        if (book.read === "yes") {
+            readInput.checked = true;
+        }
         pages.textContent = `${book.pages} Pages`;
 
         cardContainer.appendChild(card);
@@ -66,28 +69,27 @@ function createBookCard() {
         pagesContainer.appendChild(readDiv);
         readDiv.appendChild(readLabel);
         readDiv.appendChild(readInput);
-        
         pagesContainer.appendChild(pages);
+
+        deleteBtn.addEventListener('click', (e) => {
+            const cardId = card.dataset.id;
+            const bookIndex = myLibrary.findIndex((obj) => obj.id === cardId);
+            myLibrary.splice(bookIndex, 1);
+            createBookCard();
+        });
+        
+        readInput.addEventListener('click', (e) => {
+            const cardId = card.dataset.id;
+            const bookIndex = myLibrary.findIndex((obj) => obj.id === cardId);
+            if (readInput.checked) {
+                myLibrary[bookIndex].read = "yes";
+            } else {
+                myLibrary[bookIndex].read = "no";
+            }
+            console.log(myLibrary[bookIndex].title, myLibrary[bookIndex].read);
+        });
     };
 };
-
-cardContainer.addEventListener('click', (e) => {
-    if (e.target.matches('#delete-btn')) {
-        const cardId = e.target.parentElement.parentElement.dataset.id;
-        const bookIndex = myLibrary.findIndex((obj) => obj.id === cardId);
-        myLibrary.splice(bookIndex, 1);
-        createBookCard();
-    };
-
-    if (e.target.matches('#read')) {
-        const cardId = e.target.parentElement.parentElement.dataset.id;
-        const bookIndex = myLibrary.findIndex((obj) => obj.id === cardId);
-        myLibrary.splice(bookIndex, 1);
-        createBookCard();
-    };
-});
-
-
 
 titleValue.addEventListener("input", () => {
     if (titleValue.validity.valueMissing) {

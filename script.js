@@ -42,10 +42,11 @@ function createBookCard() {
         const pagesContainer = document.createElement("div");
         pagesContainer.classList.toggle("pages-container");
         const readDiv = document.createElement("div");
+        readDiv.classList.toggle("read-container");
         const readLabel = document.createElement("label");
-        readLabel.htmlFor = "read";
+        readLabel.htmlFor = "read" + i;
         const readInput = document.createElement("input");
-        readInput.id = "read";
+        readInput.id = "read" + i;
         readInput.type = "checkbox";
         const pages = document.createElement("p");
         pages.classList.toggle("pages");
@@ -86,7 +87,7 @@ function createBookCard() {
             } else {
                 myLibrary[bookIndex].read = "no";
             }
-            console.log(myLibrary[bookIndex].title, myLibrary[bookIndex].read);
+            console.log(myLibrary[bookIndex].title, "-read-", myLibrary[bookIndex].read);
         });
     };
 };

@@ -7,7 +7,7 @@ const pagesValue = document.getElementById("pages");
 const formSubmit = document.querySelector("#new-book-form");
 
 
-function Book(title, author, pages) {
+function Book(title, author, pages, read) {
     if (!new.target) {
         throw Error("You must use the 'new' operator to call the constructor.");
     };
@@ -15,10 +15,11 @@ function Book(title, author, pages) {
     this.title = title;
     this.author = author;
     this.pages = pages;
+    this.read = read;
 };
 
-function addBookToLibrary(title, author, pages) {
-    const bookItem = new Book(title, author, pages);
+function addBookToLibrary(title, author, pages, read) {
+    const bookItem = new Book(title, author, pages, read);
     myLibrary.push(bookItem);
 };
 
@@ -77,7 +78,16 @@ cardContainer.addEventListener('click', (e) => {
         myLibrary.splice(bookIndex, 1);
         createBookCard();
     };
+
+    if (e.target.matches('#read')) {
+        const cardId = e.target.parentElement.parentElement.dataset.id;
+        const bookIndex = myLibrary.findIndex((obj) => obj.id === cardId);
+        myLibrary.splice(bookIndex, 1);
+        createBookCard();
+    };
 });
+
+
 
 titleValue.addEventListener("input", () => {
     if (titleValue.validity.valueMissing) {
@@ -110,11 +120,11 @@ formSubmit.addEventListener('submit', (e) => {
 })
 
 // Sample library books list
-addBookToLibrary("The Outsider", "Albert Camus", "144");
-addBookToLibrary("Crime and Punishment", "Fyodor Dostoevsky", "650");
-addBookToLibrary("The Hobbit", "J.R.R. Tolkien", "295");
-addBookToLibrary("To Kill a Mockingbird", "Harper Lee", "320");
-addBookToLibrary("Pride and Prejudice", "Jane Austen", "400");
-addBookToLibrary("The Great Gatsby", "F. Scott Fitzgerald", "180");
+addBookToLibrary("The Outsider", "Albert Camus", "144", "yes");
+addBookToLibrary("Crime and Punishment", "Fyodor Dostoevsky", "650", "no");
+addBookToLibrary("The Hobbit", "J.R.R. Tolkien", "295", "yes");
+addBookToLibrary("To Kill a Mockingbird", "Harper Lee", "320", "no");
+addBookToLibrary("Pride and Prejudice", "Jane Austen", "400", "yes");
+addBookToLibrary("The Great Gatsby", "F. Scott Fitzgerald", "180", "no");
 
 createBookCard();

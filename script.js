@@ -38,6 +38,14 @@ function createBookCard() {
         deleteBtn.id = "delete-btn";
         const author = document.createElement("p");
         author.classList.toggle("author");
+        const pagesContainer = document.createElement ("div");
+        pagesContainer.classList.toggle("pages-container");
+        const readDiv = document.createElement("div");
+        const readLabel = document.createElement("label");
+        readLabel.htmlFor = "read";
+        const readInput = document.createElement("input");
+        readInput.id = "read";
+        readInput.type = "checkbox";
         const pages = document.createElement("p");
         pages.classList.toggle("pages");
 
@@ -45,6 +53,7 @@ function createBookCard() {
         title.textContent = book.title;
         deleteBtn.textContent = "Delete";
         author.textContent = book.author;
+        readLabel.textContent = "Read";
         pages.textContent = `${book.pages} Pages`;
 
         cardContainer.appendChild(card);
@@ -52,7 +61,12 @@ function createBookCard() {
         titleContainer.appendChild(title);
         titleContainer.appendChild(deleteBtn);
         card.appendChild(author);
-        card.appendChild(pages);
+        card.appendChild(pagesContainer);
+        pagesContainer.appendChild(readDiv);
+        readDiv.appendChild(readLabel);
+        readDiv.appendChild(readInput);
+        
+        pagesContainer.appendChild(pages);
     };
 };
 

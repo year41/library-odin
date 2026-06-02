@@ -130,9 +130,13 @@ formSubmit.addEventListener('submit', (e) => {
 // Sample library books list
 addBookToLibrary("The Outsider", "Albert Camus", "144", true);
 addBookToLibrary("Crime and Punishment", "Fyodor Dostoevsky", "650", false);
-addBookToLibrary("The Hobbit", "J.R.R. Tolkien", "295", true);
+addBookToLibrary("The Tempest", "William Shakespeare", "143", true);
+addBookToLibrary("The Hobbit", "J.R.R. Tolkien", "295", false);
+addBookToLibrary("Brave New World", "Aldous Huxley", "288", true);
 addBookToLibrary("To Kill a Mockingbird", "Harper Lee", "320", false);
-addBookToLibrary("Pride and Prejudice", "Jane Austen", "400", true);
+addBookToLibrary("1984", "George Orwell", "112", true);
+addBookToLibrary("Pride and Prejudice", "Jane Austen", "400", false);
 addBookToLibrary("The Great Gatsby", "F. Scott Fitzgerald", "180", false);
+
 
 createBookCard();

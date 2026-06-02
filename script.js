@@ -5,7 +5,9 @@ const titleValue = document.getElementById("title");
 const authorValue = document.getElementById("author");
 const pagesValue = document.getElementById("pages");
 const readValue = document.getElementById("read");
-const formSubmit = document.querySelector("#new-book-form");
+const myDialog = document.getElementById("my-dialog");
+const dialogForm = document.querySelector("#new-book-form");
+const closeDialogBtn = document.getElementById("close-dialog");
 
 
 function Book(title, author, pages, read) {
@@ -120,12 +122,17 @@ pagesValue.addEventListener("input", () => {
     };
 });
 
-formSubmit.addEventListener('submit', (e) => {
+dialogForm.addEventListener('submit', (e) => {
     addBookToLibrary(titleValue.value, authorValue.value, pagesValue.value, readValue.checked);
     console.log("New book = ", myLibrary.at(-1));
     createBookCard();
-    formSubmit.reset();
-})
+    dialogForm.reset();
+});
+
+closeDialogBtn.addEventListener('click', () => {
+    dialogForm.reset();
+    myDialog.close();
+});
 
 // Sample library books list
 addBookToLibrary("The Outsider", "Albert Camus", "144", true);

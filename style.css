@@ -141,6 +141,12 @@ dialog {
     box-shadow: 0 0 3px 1px #d55d5f;
 }
 
+#read {
+    height: 18px;
+    width: 18px;
+    margin: auto;
+}
+
 .form-btns {
     margin-top: 2rem;
     display: flex;

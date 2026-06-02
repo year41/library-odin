@@ -4,6 +4,7 @@ const cardContainer = document.querySelector('.card-container');
 const titleValue = document.getElementById("title");
 const authorValue = document.getElementById("author");
 const pagesValue = document.getElementById("pages");
+const readValue = document.getElementById("read");
 const formSubmit = document.querySelector("#new-book-form");
 
 
@@ -16,6 +17,14 @@ function Book(title, author, pages, read) {
     this.author = author;
     this.pages = pages;
     this.read = read;
+};
+
+Book.prototype.readStatus = function () {
+    if (this.read === true) {
+        return this.read = false;
+    } else {
+        return this.read = true;
+    };
 };
 
 function addBookToLibrary(title, author, pages, read) {
@@ -56,8 +65,8 @@ function createBookCard() {
         deleteBtn.textContent = "Delete";
         author.textContent = book.author;
         readLabel.textContent = "Read";
-        if (book.read === "yes") {
-            readInput.checked = true;
+        if (book.read) {
+            readInput.checked = !readInput.checked;
         }
         pages.textContent = `${book.pages} Pages`;
 
@@ -78,16 +87,11 @@ function createBookCard() {
             myLibrary.splice(bookIndex, 1);
             createBookCard();
         });
-        
+
         readInput.addEventListener('click', (e) => {
             const cardId = card.dataset.id;
             const bookIndex = myLibrary.findIndex((obj) => obj.id === cardId);
-            if (readInput.checked) {
-                myLibrary[bookIndex].read = "yes";
-            } else {
-                myLibrary[bookIndex].read = "no";
-            }
-            console.log(myLibrary[bookIndex].title, "-read-", myLibrary[bookIndex].read);
+            myLibrary[bookIndex].readStatus();
         });
     };
 };
@@ -117,17 +121,18 @@ pagesValue.addEventListener("input", () => {
 });
 
 formSubmit.addEventListener('submit', (e) => {
-    addBookToLibrary(titleValue.value, authorValue.value, pagesValue.value);
+    addBookToLibrary(titleValue.value, authorValue.value, pagesValue.value, readValue.checked);
+    console.log("New book = ", myLibrary.at(-1));
     createBookCard();
     formSubmit.reset();
 })
 
 // Sample library books list
-addBookToLibrary("The Outsider", "Albert Camus", "144", "yes");
-addBookToLibrary("Crime and Punishment", "Fyodor Dostoevsky", "650", "no");
-addBookToLibrary("The Hobbit", "J.R.R. Tolkien", "295", "yes");
-addBookToLibrary("To Kill a Mockingbird", "Harper Lee", "320", "no");
-addBookToLibrary("Pride and Prejudice", "Jane Austen", "400", "yes");
-addBookToLibrary("The Great Gatsby", "F. Scott Fitzgerald", "180", "no");
+addBookToLibrary("The Outsider", "Albert Camus", "144", true);
+addBookToLibrary("Crime and Punishment", "Fyodor Dostoevsky", "650", false);
+addBookToLibrary("The Hobbit", "J.R.R. Tolkien", "295", true);
+addBookToLibrary("To Kill a Mockingbird", "Harper Lee", "320", false);
+addBookToLibrary("Pride and Prejudice", "Jane Austen", "400", true);
+addBookToLibrary("The Great Gatsby", "F. Scott Fitzgerald", "180", false);
 
 createBookCard();

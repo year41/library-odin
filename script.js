@@ -10,15 +10,17 @@ const dialogForm = document.querySelector("#new-book-form");
 const closeDialogBtn = document.getElementById("close-dialog");
 
 
-function Book(title, author, pages, read) {
-    if (!new.target) {
-        throw Error("You must use the 'new' operator to call the constructor.");
+class Book {
+    constructor(title, author, pages, read) {
+        if (!new.target) {
+            throw Error("You must use the 'new' operator to call the constructor.");
+        };
+        this.id = crypto.randomUUID();
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.read = read;
     };
-    this.id = crypto.randomUUID();
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.read = read;
 };
 
 Book.prototype.readStatus = function () {

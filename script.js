@@ -12,24 +12,22 @@ const closeDialogBtn = document.getElementById("close-dialog");
 
 class Book {
     constructor(title, author, pages, read) {
-        if (!new.target) {
-            throw Error("You must use the 'new' operator to call the constructor.");
-        };
         this.id = crypto.randomUUID();
         this.title = title;
         this.author = author;
         this.pages = pages;
         this.read = read;
     };
-};
 
-Book.prototype.readStatus = function () {
-    if (this.read === true) {
-        return this.read = false;
-    } else {
-        return this.read = true;
+    readStatus() {
+        if (this.read === true) {
+            return this.read = false;
+        } else {
+            return this.read = true;
+        };
     };
 };
+
 
 function addBookToLibrary(title, author, pages, read) {
     const bookItem = new Book(title, author, pages, read);
